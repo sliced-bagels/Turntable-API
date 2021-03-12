@@ -1,13 +1,14 @@
 {
   "name": "ttapi",
   "description": "A turntable.fm API",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "author": "Alain Gilbert <alain.gilbert.15@gmail.com> (http://agilbert.name/)",
   "contributors": [
-    "Jeff Stieler <jeff.m.stieler@gmail.com> (http://jeffstieler.com)"
+    "Jeff Stieler <jeff.m.stieler@gmail.com> (http://jeffstieler.com)",
+    "Brian Redbeard <redbeard@dead-city.org (https://brianredbeard.com)"
   ],
   "dependencies": {
-    "node-fetch": "^2.6.1",
+    "node-fetch": "~3.0.0-beta.9",
     "ws": "^7.4.3"
   },
   "devDependencies": {
@@ -31,7 +32,7 @@
   "main": "./src/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/alaingilbert/Turntable-API.git"
+    "url": "git://github.com/sliced-bagels/Turntable-API.git"
   },
   "scripts": {
     "start": "node --require dotenv/config ./examples/chat_bot.mjs"
