@@ -40,7 +40,7 @@ class Bot extends EventEmitter {
     this.auth            = auth;
     this.userId          = userId;
     this.roomId          = roomId;
-    this.debug           = false;
+    this.debug           = null;
     this.stdout          = 'stdout';
     this.callback        = function() {};
     this.currentDjId     = null;
@@ -376,13 +376,15 @@ class Bot extends EventEmitter {
     const querystring = require('querystring');
 
     return http.createServer((req, res) => {
-      let dataStr = '';
+      let dataStr = [];
       req.on('data', chunk => {
-        return dataStr += chunk.toString();
+        return dataStr.push(chunk);
       });
       return req.on('end', () => {
-        const data = querystring.parse(dataStr);
-        req.['_POST'] = data;
+        const body = Buffer.concat(dataStr).toString();
+        const data = querystring.parse(body);
+        req['_POST'] = data;
+        req['_BODY'] = body;
         return this.emit('httpRequest', req, res);
     });
     }).listen(port, address);
