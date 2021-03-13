@@ -382,7 +382,7 @@ class Bot extends EventEmitter {
       });
       return req.on('end', () => {
         const data = querystring.parse(dataStr);
-        req._POST = data;
+        req.['_POST'] = data;
         return this.emit('httpRequest', req, res);
     });
     }).listen(port, address);
